@@ -19,8 +19,9 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+;;(setq doom-font (font-spec :family "FiraCode" :size 12 :weight 'light)
+;;       doom-variable-pitch-font (font-spec :family "Roboto" :style "Regular" :size 13 :weight 'regular))
+
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -114,11 +115,32 @@
   :config
   (global-blamer-mode 1))
 
+
+;; config for Dired Sidebar
+(use-package dired-sidebar
+  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :ensure t
+  :commands (dired-sidebar-toggle-sidebar)
+  :init
+  (add-hook 'dired-sidebar-mode-hook
+            (lambda ()
+              (unless (file-remote-p "~/Documents/Source")
+                (auto-revert-mode))))
+  :config
+  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
+  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+
+  (setq dired-sidebar-subtree-line-prefix "__")
+  (setq dired-sidebar-theme 'vscode)
+  (setq dired-sidebar-use-term-integration t)
+  (setq dired-sidebar-use-custom-font t))
+
+(use-package vscode-icon
+  :ensure t
+  :commands (vscode-icon-for-file))
+
 (remove-hook 'before-save-hook 'php-cs-fixer-before-save t)
 (remove-hook 'before-save-hook 'lsp-before-save-edits t)
-
-(after! lisp (setq inferior-lisp-program "/usr/local/bin/sbcl"))
-
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
