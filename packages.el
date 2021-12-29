@@ -53,8 +53,8 @@
 (package! vertico)
 (package! projectile-rails)
 (package! minitest)
-(package! dired-sidebar)
 (package! vscode-icon)
+(package! rspec-mode)
 
 ;; packages.el
 (package! blamer :recipe (:host github :repo "artawower/blamer.el"))
