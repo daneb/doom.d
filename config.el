@@ -90,6 +90,10 @@
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t))
 
+;; Projectile
+(setq projectile-indexing-method 'native)
+(setq projectile-enable-caching t)
+(setq projectile-project-search-path '("~/Documents/Personal/Source/" ("~/Documents/Source/" . 2)))
 
 ;; angular language server
 (setq lsp-clients-angular-language-server-command

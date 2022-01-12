@@ -1,4 +1,3 @@
-(setq projectile-project-search-path '("~/Documents/Source"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -21,3 +20,4 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/Users/danebalia/go/bin"))
 (add-hook 'go-mode-hook 'lsp-deferred)
+
